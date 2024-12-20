@@ -19,9 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 function isValidUrl(url) {
-  const urlPattern = /^(http:\/\/|https:\/\/)(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\/[a-zA-Z0-9#?=&_-]*)*$/;
+  const urlPattern = /^(http:\/\/|https:\/\/)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?(\/[a-zA-Z0-9#?&=_-]*)*$/;
   return urlPattern.test(url);
 }
+
 
 
 app.use('/public', express.static(`${process.cwd()}/public`));
