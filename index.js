@@ -36,14 +36,14 @@ app.post('/api/shorturl',(req,res)=>{
   try {
 
       if (!isValidUrl(url)) {
-        return res.status(400).json({error: 'invalid url'});
+        return res.json({error: 'invalid url'});
     }
 
     const parsedUrl=new URL(url);
     const hostname=parsedUrl.hostname
     dns.lookup(hostname, (err, address, family) => {
       if (err) {
-          return res.status(500).json({error: 'invalid url'});
+          return res.json({error: 'invalid url'});
       }
       urlLists[id]=url;
 
