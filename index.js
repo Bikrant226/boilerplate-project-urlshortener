@@ -18,10 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
-function isValidUrl(url) {
-  const urlPattern = /^(http:\/\/|https:\/\/)(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9#]+\/?)*$/;
-  return urlPattern.test(url);
-}
+// function isValidUrl(url) {
+//   const urlPattern = /^(http:\/\/|https:\/\/)(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9#]+\/?)*$/;
+//   return urlPattern.test(url);
+// }
 
 
 app.use('/public', express.static(`${process.cwd()}/public`));
@@ -34,9 +34,9 @@ app.post('/api/shorturl',(req,res)=>{
   const {url}=req.body
   try {
 
-      if (!isValidUrl(url)) {
-        return res.status(400).json({error: 'invalid url'});
-    }
+    //   if (!isValidUrl(url)) {
+    //     return res.status(400).json({error: 'invalid url'});
+    // }
 
     const parsedUrl=new URL(url);
     const hostname=parsedUrl.hostname
